@@ -24,24 +24,31 @@ def load_words(filename):
 
 def get_feedback(guess, answer):
     feedback = ['B'] * 5
+    # Use a Counter for the answer's letters to track availability
     answer_counts = collections.Counter(answer)
 
-    # 1. First Pass Mark Greens (G)
+    # 1. First Pass: Mark Greens (G)
+    # This pass identifies exact matches and reduces the pool of available letters
     for i in range(5):
         if guess[i] == answer[i]:
             feedback[i] = 'G'
+            # Decrement the count of the letter in the answer's counter
             answer_counts[guess[i]] -= 1
 
     # 2. Second Pass: Mark Yellows (Y) and Blacks (B)
     for i in range(5):
-        if guess[i] == 'G':
+        # Skip letters that were already marked Green (G)
+        if feedback[i] == 'G':
             continue
 
         letter = guess[i]
-        if answer_counts[letter] > 0:
+        
+        # Check if the letter is in the answer and hasn't been used up by a Green match
+        if answer_counts.get(letter, 0) > 0:
             feedback[i] = "Y"
+            # Decrement the count for the letter used as a Yellow match
             answer_counts[letter] -= 1
-        # Else it reamin 'B' black
+        # Else it remains 'B' (Black/Gray) from the initial assignment
 
     return "".join(feedback)
 
