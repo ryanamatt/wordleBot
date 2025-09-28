@@ -68,7 +68,6 @@ def calculate_entropy(possible_words, guess):
         probability = bucket_size / total_words
         
         # Entropy contribution: P * log2(1/P)
-        # Note: log2(1/P) is the information content (bits) of the pattern.
         entropy += probability * math.log2(1.0 / probability)
 
     # MAXIMIZE this entropy score
@@ -91,7 +90,6 @@ def find_best_guess(possible_words, full_guess_pool, quiet=False):
     else:
         # Use the full pool of all possible guess words for early, high-information turns
         guess_pool = full_guess_pool
-    # --- REFINEMENT IMPLEMENTATION END ---
     
     start_time = time.time()
 

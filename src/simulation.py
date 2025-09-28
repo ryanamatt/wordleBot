@@ -7,8 +7,7 @@ from multiprocessing import Pool
 
 ANSWER_FILE = os.path.join("..", "possible_answers.txt")
 MAX_ATTEMPTS = 6
-# Simulation limit set to the full size of the answers file (2315 words)
-SIMULATION_LIMIT = 2315 
+SIMULATION_LIMIT = 2315 # 2315 Max Number of Words in ANSWER_FILE
 NUM_PROCESSES = 10 
 OUTPUT_CSV_FILE = os.path.join("..", "csv", "simulation_data.csv") # The new file for detailed results
 
