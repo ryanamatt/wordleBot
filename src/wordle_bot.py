@@ -68,6 +68,7 @@ def calculate_entropy(possible_words, guess):
         probability = bucket_size / total_words
         
         # Entropy contribution: P * log2(1/P)
+        # Entropy is the sum of Entropy Contribution
         entropy += probability * math.log2(1.0 / probability)
 
     # MAXIMIZE this entropy score

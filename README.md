@@ -11,4 +11,5 @@ The simulation files are there to simulate how effective the Wordle Bot is and t
 The visualize files are there to take the data from written to the csv file from visualize the data for the user.
 
 ## Misc
+
 The following code is free to use for whatever anyone wants. User takes full responsibility and uses at their own risk.
