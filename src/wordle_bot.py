@@ -112,7 +112,7 @@ def find_best_guess(possible_words, full_guess_pool, quiet=False):
             best_guess = guess
 
         # Print progress for long calculations
-        if (i + 1) % 500 == 0:
+        if (i + 1) % 50 == 0:
             elapsed = time.time() - start_time
             if not quiet:
                 print(f"  Processed {i + 1}/{len(guess_pool)} guesses. Current best: {best_guess} (Entropy: {best_score:.3f}). Time: {elapsed:.2f}s")
