@@ -115,7 +115,7 @@ def find_best_guess(possible_words, full_guess_pool, quiet=False):
         if (i + 1) % 50 == 0:
             elapsed = time.time() - start_time
             if not quiet:
-                print(f"  Processed {i + 1}/{len(guess_pool)} guesses. Current best: {best_guess} (Entropy: {best_score:.3f}). Time: {elapsed:.2f}s")
+                print(f"  Processed {i + 1}/{len(guess_pool)} guesses. Current best: {best_guess} (Entropy: {best_score:.3f}). Time: {elapsed:.4f}s")
 
     end_time = time.time()
     if not quiet:
@@ -171,13 +171,17 @@ def run_wordle_bot():
         while True:
             # G: Green, Y: Yellow, B: Black/Gray
             feedback_str = input(f"Enter feedback for '{user_guess.upper()}' (e.g., GBYYB): ").strip().upper()
-            if len(feedback_str) != 5 or not all(c in FEEDBACK_CODES for c in feedback_str):
+            print(feedback_str)
+            if feedback_str == "G":
+                feedback_str = "GGGGG"
+                break
+            elif len(feedback_str) != 5 or not all(c in FEEDBACK_CODES for c in feedback_str):
                 print("Invalid feedback. Use a 5-letter sequence of 'G' (Green), 'Y' (Yellow), and 'B' (Black/Gray).")
             else:
                 break
 
         # 3. Check for Win Condition
-        if feedback_str == "GGGGG":
+        if feedback_str == "GGGGG" or feedback_str == "G":
             print(f"\n--- SUCCESS! Solved in {guess_number} guesses! ---\n")
             break
             
