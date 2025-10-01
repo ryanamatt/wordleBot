@@ -98,7 +98,7 @@ def find_best_guess(possible_words, full_guess_pool, quiet=False):
     else:
         # Use the full pool of all possible guess words for early, high-information turns
         guess_pool = full_guess_pool
-    
+
     start_time = time.time()
 
     # Iterate over the potentially reduced guess pool to maximize information gain
